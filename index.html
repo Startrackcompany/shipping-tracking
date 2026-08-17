@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Tracking</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#172033}
+.container{max-width:900px;margin:auto;padding:28px 18px 50px}
+header{background:#102a43;color:white;padding:24px;border-radius:18px;margin-bottom:20px}
+.brand{font-size:24px;font-weight:800}.sub{opacity:.8;margin-top:5px}
+.search{background:white;padding:18px;border-radius:16px;box-shadow:0 5px 20px #0000000d;margin-bottom:20px;display:flex;gap:10px}
+input{flex:1;padding:14px;border:1px solid #d8e0ea;border-radius:10px;font-size:16px}
+button{border:0;border-radius:10px;padding:14px 20px;background:#1769e0;color:white;font-weight:700;cursor:pointer}
+.card{background:white;border-radius:18px;padding:22px;box-shadow:0 5px 20px #0000000d;margin-bottom:18px}
+.status{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.badge{background:#fff3cd;color:#8a6500;padding:8px 12px;border-radius:30px;font-weight:700;font-size:14px}
+h1{font-size:25px;margin:5px 0}.muted{color:#667085}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.detail{background:#f7f9fc;padding:14px;border-radius:12px}.label{font-size:12px;color:#667085;margin-bottom:5px}.value{font-weight:700}
+.timeline{position:relative;margin-top:22px;padding-left:28px}.timeline:before{content:"";position:absolute;left:7px;top:5px;bottom:5px;width:2px;background:#d9e2ef}
+.event{position:relative;padding-bottom:25px}.dot{position:absolute;left:-28px;top:3px;width:16px;height:16px;border-radius:50%;background:#1769e0;border:3px solid white;box-shadow:0 0 0 2px #1769e0}
+.event:last-child .dot{background:#9aa8b8;box-shadow:0 0 0 2px #9aa8b8}.event h3{margin:0 0 4px;font-size:16px}.event p{margin:0;color:#667085;font-size:14px}
+footer{text-align:center;color:#7a8699;font-size:13px;margin-top:25px}
+.hidden{display:none}
+@media(max-width:600px){.search{flex-direction:column}.grid{grid-template-columns:1fr}.status{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="brand">SwiftTrack</div>
+  <div class="sub">Secure package tracking</div>
+</header>
+
+<div class="search">
+  <input id="trackingInput" value="ST-2026-458921" placeholder="Enter tracking number">
+  <button onclick="trackPackage()">Track Package</button>
+</div>
+
+<div id="result" class="card">
+  <div class="status">
+    <div>
+      <div class="muted">Tracking number</div>
+      <h1 id="trackingNumber">ST-2026-458921</h1>
+    </div>
+    <div class="badge">In Transit</div>
+  </div>
+
+  <div class="grid">
+    <div class="detail"><div class="label">Origin</div><div class="value">São Paulo, Brazil</div></div>
+    <div class="detail"><div class="label">Destination</div><div class="value">Dubai, UAE</div></div>
+    <div class="detail"><div class="label">Current location</div><div class="value">Dubai Customs</div></div>
+    <div class="detail"><div class="label">Estimated delivery</div><div class="value">25 August 2026</div></div>
+  </div>
+
+  <h2>Tracking history</h2>
+  <div class="timeline">
+    <div class="event"><span class="dot"></span><h3>Arrived at Dubai Customs</h3><p>17 August 2026 · 09:40</p></div>
+    <div class="event"><span class="dot"></span><h3>Arrived in Dubai</h3><p>16 August 2026 · 18:15</p></div>
+    <div class="event"><span class="dot"></span><h3>Departed origin facility</h3><p>14 August 2026 · 06:30</p></div>
+    <div class="event"><span class="dot"></span><h3>Shipment accepted</h3><p>12 August 2026 · 11:20</p></div>
+  </div>
+</div>
+
+<footer>Tracking information shown on this demonstration page is static.</footer>
+</div>
+
+<script>
+function trackPackage(){
+  const input=document.getElementById("trackingInput").value.trim();
+  if(!input){alert("Please enter a tracking number.");return;}
+  document.getElementById("trackingNumber").textContent=input;
+}
+</script>
+</body>
+</html>
